@@ -1,1 +1,19 @@
-/* Empty. Add your own CSS if you like */
+ion-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.button {
+  border-radius: 50%;
+  height: 270px;
+  width: 270px;
+  background: rgb(37, 84, 96);
+  color: white;
+}
+
+.title {
+  color: white;
+}
