@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  const dependencies = ['ionic'];
+  const dependencies = ['ionic', 'ngCordova'];
 
   angular
   .module('bike', dependencies)
@@ -28,5 +28,5 @@
 
   MainCtrl.$inject = [];
   function MainCtrl() {}
-  
+
 })();
