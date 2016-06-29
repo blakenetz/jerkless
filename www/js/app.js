@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+  console.log('log on top of app.js');
   const dependencies = ['ionic', 'ngCordova'];
 
   angular
@@ -22,7 +22,13 @@
 
   MainCtrl.$inject = ['$scope', '$cordovaDeviceMotion'];
   function MainCtrl($scope, $cordovaDeviceMotion) {
+    console.log('within MainCtrl');
+    $scope.activate = function () {
+      console.log('on button push');
+    }
+
     document.addEventListener("deviceready", function () {
+      console.log('hi');
       $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
         console.log(result);
       }, function(err) {
@@ -30,5 +36,6 @@
       });
     }, false)
   }
+
 
 })();

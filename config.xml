@@ -2,11 +2,12 @@
 <widget id="com.ionicframework.capstone314937" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>capstone</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="blake.netzeband@gmail.com" href="http://example.com.com/">
-      Blake Netzeband
-    </author>
+    An Ionic Framework and Cordova project.
+  </description>
+  <author email="blake.netzeband@gmail.com" href="https://github.com/blakeface/capstone">
+    Blake Netzeband
+  </author>
+  <allow-navigation href="http://192.168.0.101:8100"/>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
