@@ -21,41 +21,75 @@
 
   MainCtrl.$inject = ['$scope'];
   function MainCtrl($scope) {
-    var options = { frequency: 1000 };
-    var active = false;
-    var watchID;
+    var accelID, geoID;
     var data = [];
+    var active = false;
+    var interval = 250;
+    var accelOptions = { frequency: 1000 };
+    var geoObj = {
+      latitude: null,
+      longitude: null,
+      timestamp: null
+    };
+
     $scope.status = "Turn On"
 
     document.addEventListener("deviceready", onDeviceReady, false);
-
     function onDeviceReady() {
+
+
       $scope.activate = function () {
         if (active) {
-          $scope.status = "Turn On"
-          navigator.accelerometer.clearWatch(watchID);
-          console.log(data);
+          $scope.status = "Turn On";
+          navigator.accelerometer.clearWatch(accelID);
+          navigator.geolocation.clearWatch(geoID);
         }
         else {
-          $scope.status = "Turn Off"
-          data = [];
-          watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+          $scope.status = "Turn Off";
+          accelID = navigator.accelerometer.watchAcceleration(accelSuccess, accelFail, accelOptions);
+          setTimeout(function() {
+            return geoID = navigator.geolocation.getCurrentPosition(geoSuccess, geoFail);
+            return findDifference();
+          }, interval);
         }
         active = !active;
       }
     }
 
-    function onSuccess(results) {
-      $scope.x = results.x;
-      $scope.y = results.y;
-      $scope.z = results.z;
-      $scope.timestamp = results.timestamp;
-
-      data.push(results);
+    function findDifference() {
+      for (var i = 0; i < data.length; i++) {
+        console.log('data[i]', data[i]);
+      }
     }
 
-    function onError(err) {
-      console.log('err', err);
+    function accelSuccess(accelData) {
+      $scope.x = accelData.x;
+      $scope.y = accelData.y;
+      $scope.z = accelData.z;
+      $scope.accelTimestamp = accelData.timestamp;
+
+      data.push(accelData);
+      console.log('accelData: ', JSON.stringify(accelData));
+    }
+    function geoSuccess(position) {
+      geoObj.latitude = position.coords.latitude;
+      geoObj.longitude = position.coords.longitude;
+      geoObj.timestamp = position.coords.timestamp;
+
+      $scope.lat = position.coords.latitude;
+      $scope.lon = position.coords.longitude;
+      $scope.altitude = position.coords.altitude;
+      $scope.geoTimestamp = position.timestamp;
+
+      data.push(position);
+      console.log('geoData: ', JSON.stringify(geoObj));
+    }
+
+    function accelFail(err) {
+      console.warn('err', err);
+    }
+    function geoFail(err) {
+      console.warn('err', err);
     }
   }
 })();

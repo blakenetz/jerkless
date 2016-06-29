@@ -30,11 +30,19 @@
       <button class="button button-large" ng-click="activate()">
         {{status}}
       </button>
+      <h3>Motion Data:</h3>
       <ul>
         <li>x: {{x}}</li>
         <li>y: {{y}}</li>
         <li>z: {{z}}</li>
-        <li>timestamp: {{timestamp}}</li>
+        <li>timestamp: {{accelTimestamp}}</li>
+      </ul>
+      <h3>Geo Data:</h3>
+      <ul>
+        <li>latitude: {{lat}}</li>
+        <li>longitude: {{lon}}</li>
+        <li>altitude: {{altitude}}</li>
+        <li>timestamp: {{geoTimestamp}}</li>
       </ul>
     </ion-content>
   </ion-pane>
