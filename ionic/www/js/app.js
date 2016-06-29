@@ -24,13 +24,23 @@
     var options = { frequency: 1000 };
     var active = false;
     var watchID;
+    var data = [];
+    $scope.status = "Turn On"
 
     document.addEventListener("deviceready", onDeviceReady, false);
 
     function onDeviceReady() {
       $scope.activate = function () {
-        if (active) navigator.accelerometer.clearWatch(watchID);
-        else watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+        if (active) {
+          $scope.status = "Turn On"
+          navigator.accelerometer.clearWatch(watchID);
+          console.log(data);
+        }
+        else {
+          $scope.status = "Turn Off"
+          data = [];
+          watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+        }
         active = !active;
       }
     }
@@ -41,7 +51,7 @@
       $scope.z = results.z;
       $scope.timestamp = results.timestamp;
 
-      console.log('results', results);
+      data.push(results);
     }
 
     function onError(err) {
