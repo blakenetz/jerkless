@@ -11,6 +11,8 @@
   <!-- ionic/angular/cordova -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
 
   <!-- js -->
@@ -28,6 +30,12 @@
       <button class="button button-large" ng-click="activate()">
         On / Off
       </button>
+      <ul>
+        <li>x: {{x}}</li>
+        <li>y: {{y}}</li>
+        <li>z: {{z}}</li>
+        <li>timestamp: {{timestamp}}</li>
+      </ul>
     </ion-content>
   </ion-pane>
 </body>

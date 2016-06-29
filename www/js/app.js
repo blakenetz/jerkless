@@ -1,6 +1,5 @@
 (function () {
-  console.log('log on top of app.js');
-  const dependencies = ['ionic', 'ngCordova'];
+  var dependencies = ['ionic', 'ngCordova'];
 
   angular
   .module('bike', dependencies)
@@ -20,22 +19,33 @@
     });
   }
 
-  MainCtrl.$inject = ['$scope', '$cordovaDeviceMotion'];
-  function MainCtrl($scope, $cordovaDeviceMotion) {
-    console.log('within MainCtrl');
-    $scope.activate = function () {
-      console.log('on button push');
+  MainCtrl.$inject = ['$scope'];
+  function MainCtrl($scope) {
+    var options = { frequency: 1000 };
+    var active = false;
+    var watchID;
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+      $scope.activate = function () {
+        if (active) navigator.accelerometer.clearWatch(watchID);
+        else watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+        active = !active;
+      }
     }
 
-    document.addEventListener("deviceready", function () {
-      console.log('hi');
-      $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
-        console.log(result);
-      }, function(err) {
-        console.log(err);
-      });
-    }, false)
+    function onSuccess(results) {
+      $scope.x = results.x;
+      $scope.y = results.y;
+      $scope.z = results.z;
+      $scope.timestamp = results.timestamp;
+
+      console.log('results', results);
+    }
+
+    function onError(err) {
+      console.log('err', err);
+    }
   }
-
-
 })();
