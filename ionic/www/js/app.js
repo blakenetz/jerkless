@@ -83,6 +83,7 @@
 
       data.push(position);
       console.log('geoData: ', JSON.stringify(geoObj));
+      console.log('position data: ', JSON.stringify(position));
     }
 
     function accelFail(err) {
