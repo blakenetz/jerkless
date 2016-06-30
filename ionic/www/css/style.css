@@ -1,10 +1,10 @@
 .bar-header{
   background: rgb(48, 145, 142);
-  color: white;
 }
 
 .title {
-  font-weight: 900;
+  font-weight: 900 !important;
+  color: white !important;
 }
 
 .button-wrapper {

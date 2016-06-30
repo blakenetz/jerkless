@@ -7,12 +7,12 @@
 
   <!-- stylesheets -->
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-  <link href="lib/angular-chart.js/dist/angular-chart.min.css"></script>
+  <link href="lib/angular-chart.js/dist/angular-chart.min.css">
   <link href="css/style.css" rel="stylesheet">
 
   <!-- ionic/angular/cordova -->
-  <script src="lib/ionic/js/ionic.bundle.js"></script>
-  <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+  <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
 
   <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
@@ -22,7 +22,7 @@
   <script src="lib/angular-chart.js/dist/angular-chart.min.js"></script>
   <script src="js/app.js"></script>
 </head>
-<body ng-controller="MainCtrl" ng-cloak>
+<body ng-controller="MainCtrl" ng-cloak="">
 
   <ion-pane>
     <div class="bar bar-header">
@@ -43,11 +43,19 @@
       <div class="button-wrapper">
         <button class="button button-large" ng-click="activate()">
           <div class="button-internal">
-            <img src="img/bicycle-sprockets.png" alt="bike" />
+            <img src="img/bicycle-sprockets.png" alt="bike">
             <p>{{status}}</p>
           </div>
         </button>
       </div>
+      <!-- <div>
+        <ul ng-repeat="location in geoData track by $index">
+          <li>index: {{[$index]}}</li>
+          <li>latitude: {{location.latitude}}</li>
+          <li>longitude: {{location.longitude}}</li>
+          <li>timestamp: {{location.timestamp}}</li>
+        </ul>
+      </div> -->
     </ion-content>
   </ion-pane>
 </body>
