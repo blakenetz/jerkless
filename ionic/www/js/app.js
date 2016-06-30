@@ -1,5 +1,5 @@
 (function () {
-  var dependencies = ['ionic', 'ngCordova'];
+  var dependencies = ['ionic', 'ngCordova', 'chart.js'];
 
   angular
   .module('bike', dependencies)
