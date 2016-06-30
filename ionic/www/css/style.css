@@ -45,3 +45,9 @@
 .card {
   margin-top: 70px;
 }
+
+.magJerk-holder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

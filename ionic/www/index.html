@@ -22,7 +22,7 @@
   <script src="lib/angular-chart.js/dist/angular-chart.min.js"></script>
   <script src="js/app.js"></script>
 </head>
-<body ng-controller="MainCtrl">
+<body ng-controller="MainCtrl" ng-cloak>
 
   <ion-pane>
     <div class="bar bar-header">
@@ -36,6 +36,9 @@
         <div class="item item-text-wrap">
           <canvas id="line" class="chart chart-line" chart-data="chartData" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="{showTooltips: false}"></canvas>
         </div>
+      </div>
+      <div class="magJerk-holder">
+        <h4> Avg. Mag-Jerk: {{magJerk}}</h4>
       </div>
       <div class="button-wrapper">
         <button class="button button-large" ng-click="activate()">
