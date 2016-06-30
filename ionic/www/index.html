@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title></title>
+
   <!-- stylesheets -->
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
   <link rel="stylesheet" href="css/angular-chart.min.css">
@@ -24,29 +25,26 @@
 <body ng-controller="MainCtrl">
 
   <ion-pane>
-    <ion-header-bar class="bar-stable">
-      <div class="bar bar-header bar-dark">
-        <h1 class="title">Bike</h1>
-      </div>
-    </ion-header-bar>
+    <div class="bar bar-header">
+      <h1 class="title">Bike</h1>
+    </div>
     <ion-content>
-      <button class="button button-large" ng-click="activate()">
-        {{status}}
-      </button>
-      <h3>Motion Data:</h3>
-      <ul>
-        <li>x: {{x}}</li>
-        <li>y: {{y}}</li>
-        <li>z: {{z}}</li>
-        <li>timestamp: {{accelTimestamp}}</li>
-      </ul>
-      <h3>Geo Data:</h3>
-      <ul>
-        <li>latitude: {{lat}}</li>
-        <li>longitude: {{lon}}</li>
-        <li>altitude: {{altitude}}</li>
-        <li>timestamp: {{geoTimestamp}}</li>
-      </ul>
+      <div class="button-wrapper">
+        <button class="button button-large" ng-click="activate()">
+          <div class="button-internal">
+            <img src="img/bicycle-sprockets.png" alt="bike" />
+            {{status}}
+          </div>
+        </button>
+      </div>
+      <div class="card">
+        <div class="item item-divider">
+          Jerk
+        </div>
+        <div class="item item-text-wrap">
+          <canvas id="line" class="chart chart-line" data="data" labels="labels" legend="true" series="series" options="{showTooltips: false}"></canvas>
+        </div>
+      </div>
     </ion-content>
   </ion-pane>
 </body>

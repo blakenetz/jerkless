@@ -67,11 +67,6 @@
     }
 
     function accelSuccess(results) {
-      $scope.x = results.x;
-      $scope.y = results.y;
-      $scope.z = results.z;
-      $scope.accelTimestamp = results.timestamp;
-
       accelData.push(results);
     }
     function geoSuccess(position) {
@@ -83,12 +78,6 @@
         geoData.push(geoObj);
         geoObj = {};
       }, interval)
-
-      $scope.lat = position.coords.latitude;
-      $scope.lon = position.coords.longitude;
-      $scope.altitude = position.coords.altitude;
-      $scope.geoTimestamp = position.timestamp;
-
     }
 
     function accelFail(err) {

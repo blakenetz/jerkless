@@ -1,19 +1,34 @@
-ion-content {
+.bar-header{
+  background: rgb(48, 145, 142);
+  color: white;
+}
+
+.button-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  margin-top: 90px;
 }
 
 .button {
-  border-radius: 50%;
-  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 270px;
-  background: rgb(37, 84, 96);
-  color: white;
+  height: 270px;
+  border-radius: 50%;
+  border: 5px solid black;
 }
 
-.title {
-  color: white;
+.button img {
+  height: 120px;
+  width: auto;
+  margin: 0px;
+}
+
+.button-internal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
