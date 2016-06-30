@@ -1,8 +1,15 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body{
+  margin: 0px;
 }
 
-a {
-  color: #00B7FF;
+header {
+  background: rgb(255, 243, 138);
+  height: 60px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+header h3 {
+  margin-left: 20px;
 }
