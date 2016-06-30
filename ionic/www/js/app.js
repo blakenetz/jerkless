@@ -81,7 +81,7 @@
         else {
           $scope.status = "Turn Off";
           accelID = navigator.accelerometer.watchAcceleration(accelSuccess, accelFail, accelOptions);
-          navigator.geolocation.getCurrentPosition(geoSuccess, geoFail);
+          geoID = navigator.geolocation.watchPosition(geoSuccess, geoFail);
         }
         active = !active;
       }
@@ -104,7 +104,6 @@
 
     function getMagJerk() {
       var jerkSqr = 0;
-
       for (var i = 0; i < jerkArray.length; i++) {
         for (var j = 0; j < jerkArray[i].length; j++) {
           for (var dataPoint in jerkArray[i][j]) {
@@ -128,7 +127,6 @@
     function reduceTimeArray (arr){
       var fifthsArray = [0,0,0,0,0];
       var oneFifthLength = Math.floor(arr.length / 5);
-
       for(var i = 0; i < 5; i++){
         var sum = 0;
         for(var j = oneFifthLength * i; j < oneFifthLength * (i+1); j++){
@@ -147,11 +145,7 @@
       geoObj.latitude = position.coords.latitude;
       geoObj.longitude = position.coords.longitude;
       geoObj.timestamp = position.coords.timestamp;
-
-      window.setTimeout(function () {
-        geoData.push(geoObj);
-        geoObj = {};
-      }, interval)
+      console.log(JSON.stringify(position));
     }
 
     function accelFail(err) {
