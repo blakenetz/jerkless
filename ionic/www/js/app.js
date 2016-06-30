@@ -61,9 +61,9 @@
           }
           if (timeArray.length > 5) {
             timeArray = reduceTimeArray(timeArray);
-            $scope.labels = timeArray;
           }
-          getMagJerkArray();
+          $scope.labels = timeArray;
+          getMagJerk();
           magJerk = (sum/magJerkArray.length).toFixed(2);
           $scope.magJerk = magJerk;
 
@@ -75,6 +75,8 @@
           timeArray = [];
           jerkArray = [];
           magJerkArray = [];
+          magJerk = 0;
+          sum = 0;
         }
         else {
           $scope.status = "Turn Off";
@@ -100,7 +102,7 @@
       return jerkArray;
     }
 
-    function getMagJerkArray() {
+    function getMagJerk() {
       var jerkSqr = 0;
 
       for (var i = 0; i < jerkArray.length; i++) {
@@ -112,6 +114,7 @@
             if (dataPoint==='timestamp') {
               jerkSqr = Math.sqrt(jerkSqr);
               magJerkArray.push(jerkSqr);
+              jerkSqr = 0;
             }
           }
         }
