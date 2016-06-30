@@ -28,6 +28,7 @@
     var xArray = [];
     var yArray = [];
     var zArray = [];
+    var timeArray = [];
     var active = false;
     var interval = 250;
     var accelOptions = { frequency: interval };
@@ -38,8 +39,7 @@
     };
 
     $scope.chartData = [xArray, yArray, zArray];
-    $scope.series = ['X-axis', 'Y-axis', 'Z-axis'];
-    $scope.labels = ['','Time',''];
+    $scope.labels = timeArray;
     $scope.status = "Turn On";
 
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -51,20 +51,23 @@
           $scope.status = "Turn On";
           navigator.accelerometer.clearWatch(accelID);
           navigator.geolocation.clearWatch(geoID);
-          console.log('before', jerkArray);
           for (var i = 0; i < accelData.length-1; i++) {
             for (var dataPoint in accelData[i]) {
               jerk = (accelData[i+1][dataPoint] - accelData[i][dataPoint]) / (interval/1000);
               if (dataPoint==='x') xArray.push(jerk);
               if (dataPoint==='y') yArray.push(jerk);
               if (dataPoint==='z') zArray.push(jerk);
+              if (dataPoint==='timestamp') timeArray.push(+(jerk / 1000).toFixed(2));
               jerkArray.push({[dataPoint]: jerk});
             }
           }
-          console.log('after', JSON.stringify(jerkArray));
+          for (var i = 1; i < timeArray.length; i++) {
+            timeArray[i] += timeArray[i-1];
+          }
 
           geoData = [];
           accelData = [];
+          jerkArray = [];
         }
         else {
           $scope.status = "Turn Off";
