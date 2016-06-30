@@ -3,27 +3,36 @@
   color: white;
 }
 
+.title {
+  font-weight: 900;
+}
+
 .button-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 90px;
 }
 
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 270px;
-  height: 270px;
+  width: 210px;
+  height: 210px;
   border-radius: 50%;
   border: 5px solid black;
 }
 
 .button img {
-  height: 120px;
+  height: 100px;
   width: auto;
-  margin: 0px;
+  margin-left: 26px;
+  margin-bottom: -15px;
+  transform: rotate(20deg);
+}
+
+.button p {
+  margin-left: 40px;
 }
 
 .button-internal{
@@ -31,4 +40,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.card {
+  margin-top: 70px;
 }

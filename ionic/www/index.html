@@ -7,7 +7,7 @@
 
   <!-- stylesheets -->
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/angular-chart.min.css">
+  <link href="lib/angular-chart.js/dist/angular-chart.min.css"></script>
   <link href="css/style.css" rel="stylesheet">
 
   <!-- ionic/angular/cordova -->
@@ -18,32 +18,32 @@
   <script src="cordova.js"></script>
 
   <!-- js -->
-  <script src="js/Chart.bundle.min.js"></script>
-  <script src="js/angular-chart.min.js"></script>
+  <script src="lib/Chart.js/Chart.js"></script>
+  <script src="lib/angular-chart.js/dist/angular-chart.min.js"></script>
   <script src="js/app.js"></script>
 </head>
 <body ng-controller="MainCtrl">
 
   <ion-pane>
     <div class="bar bar-header">
-      <h1 class="title">Bike</h1>
+      <h1 class="title">Jerk-less</h1>
     </div>
     <ion-content>
+      <div class="card">
+        <div class="item item-divider">
+          Jerk Values
+        </div>
+        <div class="item item-text-wrap">
+          <canvas id="line" class="chart chart-line" chart-data="chartData" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="{showTooltips: false}"></canvas>
+        </div>
+      </div>
       <div class="button-wrapper">
         <button class="button button-large" ng-click="activate()">
           <div class="button-internal">
             <img src="img/bicycle-sprockets.png" alt="bike" />
-            {{status}}
+            <p>{{status}}</p>
           </div>
         </button>
-      </div>
-      <div class="card">
-        <div class="item item-divider">
-          Jerk
-        </div>
-        <div class="item item-text-wrap">
-          <canvas id="line" class="chart chart-line" data="data" labels="labels" legend="true" series="series" options="{showTooltips: false}"></canvas>
-        </div>
       </div>
     </ion-content>
   </ion-pane>

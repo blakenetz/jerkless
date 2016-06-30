@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "capstone: An Ionic project",
   "dependencies": {
+    "angular-chart.js": "^1.0.0-alpha8",
     "chart.js": "^2.1.6",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
