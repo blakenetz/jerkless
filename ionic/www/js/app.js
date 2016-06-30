@@ -101,15 +101,14 @@
     function getGeoData() {
       for (var i = 0; i < geoData.length; i++) {
         for (var j = 0; j < recordedData.length; j++) {
-          // console.log(JSON.stringify(recordedData[0]));
-          console.log(Array.isArray(recordedData[j]));
-          if (j===0) {
+          if (recordedData[0].length < 6) {
             recordedData[j].push({'latitude': geoData[0].latitude}, {'longitude': geoData[0].longitude});
-          } else if (recordedData[0][j].timestamp - geoData[i].timestamp <= 250) {
+          } else if (geoData[i].timestamp - recordedData[j].timestamp <= 250 && recordedData[j].length < 6) {
             recordedData[j].push({'latitude': geoData[i].latitude},{'longitude': geoData[i].longitude});
           }
         }
       }
+      console.log(JSON.stringify(recordedData, null, 2));
       return recordedData;
     }
 
