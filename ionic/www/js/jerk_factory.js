@@ -30,7 +30,8 @@
         for (var i = 0; i < magJerkArray.length; i++) {
           sum += magJerkArray[i]
         }
-        return { sum, magJerkArray };
+        var magJerk = (sum/magJerkArray.length).toFixed(2);
+        return magJerk;
       },
 
       standardizeData: function(recordedData) {

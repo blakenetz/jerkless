@@ -7,14 +7,12 @@
   MainCtrl.$inject = ['$scope', '$http', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory'];
   function MainCtrl($scope, $http, AccelFactory, GeoFactory, TimeFactory, JerkFactory) {
     var accelID, geoID;
-    var magJerk = 0;
     var accelData = [];
     var geoData = [];
     var xArray = [];
     var yArray = [];
     var zArray = [];
     var timeArray = [];
-    var magJerkArray = [];
     var active = false;
     var interval = 250;
     var accelOptions = { frequency: interval };
@@ -28,8 +26,7 @@
     $scope.chartData = [xArray, yArray, zArray];
     $scope.labels = timeArray;
     $scope.status = "Turn On";
-    $scope.magJerk = magJerk;
-    $scope.geoData = geoData;
+    $scope.magJerk = 0;
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
@@ -50,16 +47,15 @@
           GeoFactory.getGeoData(geoData, recordedData);
           $scope.chartData = [xArray, yArray, zArray];
 
-          if (timeArray.length) TimeFactory.adjustTimeArray(timeArray);
+          if (timeArray.length) timeArray = TimeFactory.adjustTimeArray(timeArray);
           $scope.labels = timeArray;
 
-          var jerkData = JerkFactory.getMagJerk(recordedData);
-          sum = jerkData.sum;
-          magJerkArray = jerkData.magJerkArray;
+          var magJerk = JerkFactory.getMagJerk(recordedData);
+          if (recordedData.length) {
+            $scope.magJerk = magJerk;
+            JerkFactory.standardizeData(recordedData);
+          }
 
-          magJerk = (sum/magJerkArray.length).toFixed(2);
-          $scope.magJerk = magJerk;
-          JerkFactory.standardizeData(recordedData);
         }
         else {
           accelData = [];
@@ -69,9 +65,6 @@
           zArray = [];
           timeArray = [];
           recordedData = [];
-          magJerkArray = [];
-          magJerk = 0;
-          sum = 0;
           $scope.status = "Turn Off";
           accelID = navigator.accelerometer.watchAcceleration(accelSuccess, accelFail, accelOptions);
           geoID = navigator.geolocation.watchPosition(geoSuccess, geoFail, geoOptions);
@@ -88,7 +81,6 @@
       geoObj.longitude = position.coords.longitude;
       geoObj.timestamp = position.timestamp;
       geoData.push(geoObj);
-      $scope.geoData = geoData;
       geoObj = {
         latitude: null,
         longitude: null,
