@@ -57,7 +57,6 @@
           navigator.accelerometer.clearWatch(accelID);
           navigator.geolocation.clearWatch(geoID);
           getAccelData();
-          // console.log(JSON.stringify(recordedData[0]));
           getGeoData();
           $scope.chartData = [xArray, yArray, zArray];
           if (timeArray.length) adjustTimeArray();
@@ -65,6 +64,7 @@
           getMagJerk();
           magJerk = (sum/magJerkArray.length).toFixed(2);
           $scope.magJerk = magJerk;
+          standardizeData();
 
           accelData = [];
           geoData = [];
@@ -86,6 +86,10 @@
       }
     }
 
+    function standardizeData() {
+      console.log(JSON.stringify(recordedData, null, 2));
+    }
+
     function adjustTimeArray() {
       timeArray[0] = +timeArray[0].toFixed(2);
       for (var i = 1; i < timeArray.length; i++) {
@@ -103,12 +107,11 @@
         for (var j = 0; j < recordedData.length; j++) {
           if (recordedData[0].length < 6) {
             recordedData[j].push({'latitude': geoData[0].latitude}, {'longitude': geoData[0].longitude});
-          } else if (geoData[i].timestamp - recordedData[j].timestamp <= 250 && recordedData[j].length < 6) {
+          } else if (geoData[i].timestamp - recordedData[j].timestamp <= 260 && recordedData[j].length < 6) {
             recordedData[j].push({'latitude': geoData[i].latitude},{'longitude': geoData[i].longitude});
           }
         }
       }
-      console.log(JSON.stringify(recordedData, null, 2));
       return recordedData;
     }
 
