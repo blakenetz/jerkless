@@ -10,17 +10,24 @@
   <link href="lib/angular-chart.js/dist/angular-chart.min.css">
   <link href="css/style.css" rel="stylesheet">
 
-  <!-- ionic/angular/cordova -->
+  <!-- ionic/cordova/angular packages -->
   <script src="lib/ionic/js/ionic.bundle.min.js"></script>
   <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
-
-  <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
-
-  <!-- js -->
   <script src="lib/Chart.js/Chart.js"></script>
   <script src="lib/angular-chart.js/dist/angular-chart.min.js"></script>
-  <script src="js/app.js"></script>
+
+  <!-- angular module -->
+  <script src="js/module.js"></script>
+
+  <!-- angular factories -->
+  <script src="js/accel_factory.js"></script>
+  <script src="js/geo_factory.js"></script>
+  <script src="js/time_factory.js"></script>
+  <script src="js/jerk_factory.js"></script>
+
+  <!-- angular controller -->
+  <script src="js/controller.js"></script>
 </head>
 <body ng-controller="MainCtrl" ng-cloak="">
 
