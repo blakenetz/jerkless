@@ -8,7 +8,6 @@
   function MainCtrl($scope, $http, AccelFactory, GeoFactory, TimeFactory, JerkFactory) {
     var accelID, geoID;
     var magJerk = 0;
-    var sum = 0;
     var accelData = [];
     var geoData = [];
     var xArray = [];
@@ -54,7 +53,10 @@
           if (timeArray.length) TimeFactory.adjustTimeArray(timeArray);
           $scope.labels = timeArray;
 
-          JerkFactory.getMagJerk(recordedData);
+          var jerkData = JerkFactory.getMagJerk(recordedData);
+          sum = jerkData.sum;
+          magJerkArray = jerkData.magJerkArray;
+
           magJerk = (sum/magJerkArray.length).toFixed(2);
           $scope.magJerk = magJerk;
           JerkFactory.standardizeData(recordedData);
