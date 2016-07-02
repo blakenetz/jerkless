@@ -36,14 +36,14 @@
 
       standardizeData: function(recordedData) {
         var route = {};
-        var url = "http://localhost:3000/ionic";
+        var url = "https://jerkmaps.herokuapp.com";
 
         var jerk_value = Math.sqrt( Math.pow(recordedData[0][0].x, 2) + Math.pow(recordedData[0][1].y, 2) + Math.pow(recordedData[0][2].z, 2) );
         route.location = [recordedData[0][4].latitude, recordedData[0][5].longitude];
         route.jerk_value = jerk_value;
         console.log(JSON.stringify(route));
 
-        $http.post(url, route).then(function successCallback(response) {
+        $http.post(url+"/addroute", route).then(function successCallback(response) {
           console.log('success', response);
         }, function errorCallback(err) {
           console.warn(JSON.stringify(err, null, 2));

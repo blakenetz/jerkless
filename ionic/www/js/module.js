@@ -5,7 +5,7 @@
   angular
   .module('bike', dependencies)
   .run(runIonic);
-
+  
   runIonic.$inject = ['$ionicPlatform'];
   function runIonic($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -18,6 +18,4 @@
       }
     });
   }
-
-
-})()
+})();
