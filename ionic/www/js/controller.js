@@ -4,8 +4,8 @@
   .module('bike')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$http', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory'];
-  function MainCtrl($scope, $http, AccelFactory, GeoFactory, TimeFactory, JerkFactory) {
+  MainCtrl.$inject = ['$scope', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory'];
+  function MainCtrl($scope, AccelFactory, GeoFactory, TimeFactory, JerkFactory) {
     var accelID, geoID;
     var accelData = [];
     var geoData = [];
@@ -17,11 +17,7 @@
     var interval = 250;
     var accelOptions = { frequency: interval };
     var geoOptions = { enableHighAccuracy: true };
-    var geoObj = {
-      latitude: null,
-      longitude: null,
-      timestamp: null
-    };
+    var geoObj = { latitude: null, longitude: null, timestamp: null };
 
     $scope.chartData = [xArray, yArray, zArray];
     $scope.labels = timeArray;
