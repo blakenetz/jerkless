@@ -13,8 +13,8 @@ $ ionic emulate ios
 To run with on a browser:  
 $ ionic serve ios
 
-Temporary URL:  
-https://gentle-reaches-86060.herokuapp.com/
+Deployed at:  
+https://jerkmaps.herokuapp.com/
 
 Specs:  
-Ionic, iOS accelerometer and geo-locator, Node.js
+Ionic, iOS accelerometer and geo-locator, Socket.io, Node.js

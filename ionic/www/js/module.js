@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var dependencies = ['ionic', 'ngCordova', 'chart.js', 'btford.socket-io'];
+  var dependencies = ['ionic', 'ngCordova', 'chart.js'];
 
   angular
   .module('bike', dependencies)

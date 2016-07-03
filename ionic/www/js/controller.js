@@ -24,6 +24,10 @@
     $scope.status = "Turn On";
     $scope.magJerk = 0;
 
+    var url = "http://localhost:3000";
+    // var url = "https://jerkmaps.herokuapp.com";
+
+
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
 
