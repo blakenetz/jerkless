@@ -1,11 +1,11 @@
 (function () {
   'use strict';
-  var dependencies = ['ionic', 'ngCordova', 'chart.js'];
+  var dependencies = ['ionic', 'ngCordova', 'chart.js', 'btford.socket-io'];
 
   angular
   .module('bike', dependencies)
   .run(runIonic);
-  
+
   runIonic.$inject = ['$ionicPlatform'];
   function runIonic($ionicPlatform) {
     $ionicPlatform.ready(function() {
