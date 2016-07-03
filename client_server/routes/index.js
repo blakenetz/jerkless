@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/addroute', function(req, res, next) {
+router.post('/addroute', function(req, res) {
   console.log(req);
   console.log(res);
 });
