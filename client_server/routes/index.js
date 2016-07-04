@@ -3,7 +3,9 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
-  res.render('index')
+  var routes = knex.select('*').table('routes');
+  console.log(routes);
+  res.render('index', { routes })
 });
 
 router.post('/', function(req, res, next) {
