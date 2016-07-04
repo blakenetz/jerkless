@@ -4,8 +4,21 @@
   .module('bike')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory'];
-  function MainCtrl($scope, AccelFactory, GeoFactory, TimeFactory, JerkFactory) {
+  MainCtrl.$inject = ['$scope', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory', '$http'];
+  function MainCtrl($scope, AccelFactory, GeoFactory, TimeFactory, JerkFactory, $http) {
+
+    $scope.test = function () {
+      $http.get('http://localhost:3000/')
+      .then(function (success) {
+        console.log('SUCCESS', success);
+        // deferred.resolve(success)
+      })
+      .catch(function (err) {
+        console.log('err',JSON.stringify(err, null, 2));
+        // deferred.reject(err)
+      })
+    }
+
     var accelID, geoID;
     var accelData = [];
     var geoData = [];
@@ -49,9 +62,7 @@
           var magJerk = JerkFactory.getMagJerk(recordedData);
           if (recordedData.length) {
             $scope.magJerk = magJerk;
-            JerkFactory.standardizeData(recordedData).then(function (results) {
-              console.log(JSON.stringify(results))
-            });
+            JerkFactory.standardizeData(recordedData);
           }
 
         }
