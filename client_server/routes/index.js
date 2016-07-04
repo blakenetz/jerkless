@@ -1,12 +1,17 @@
 var express = require('express');
 var router = express.Router();
+var knex = require('knex')(require('../knexfile'));
 
 router.get('/', function(req, res, next) {
-  res.json({test: 'hi from node index.js'})
+  res.render('index')
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body);
+  // for (var i = 1; i < req.body.length; i++) {
+  //   // knex('routes')
+  //   // .insert()
+  //   console.log(req.body[i]);
+  // }
 })
 
 module.exports = router;
