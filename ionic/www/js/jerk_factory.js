@@ -36,8 +36,7 @@
       standardizeData: function(recordedData) {
         var route = {};
         // var url = "https://jerkmaps.herokuapp.com";
-        // var url = "http://localhost:3000";
-        var url = "http://api.pixplorer.co.uk/image?word=gorillas";
+        var url = 'http://Blake.local';
         var deferred = $q.defer();
 
         var jerk_value = Math.sqrt( Math.pow(recordedData[0][0].x, 2) + Math.pow(recordedData[0][1].y, 2) + Math.pow(recordedData[0][2].z, 2) );
@@ -45,13 +44,11 @@
         route.jerk_value = jerk_value;
 
         console.log('factory called');
-        $http.get(url)
+        $http.post(url)
         .then(function (success) {
-          console.log('SUCCESS', success);
           deferred.resolve(success)
         })
         .catch(function (err) {
-          console.log('err',JSON.stringify(err, null, 2));
           deferred.reject(err)
         })
 

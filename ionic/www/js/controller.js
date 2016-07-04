@@ -4,21 +4,8 @@
   .module('bike')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory', '$http'];
-  function MainCtrl($scope, AccelFactory, GeoFactory, TimeFactory, JerkFactory, $http) {
-
-    $scope.test = function () {
-      $http.get('http://localhost:3000/')
-      .then(function (success) {
-        console.log('SUCCESS', success);
-        // deferred.resolve(success)
-      })
-      .catch(function (err) {
-        console.log('err',JSON.stringify(err, null, 2));
-        // deferred.reject(err)
-      })
-    }
-
+  MainCtrl.$inject = ['$scope', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory'];
+  function MainCtrl($scope, AccelFactory, GeoFactory, TimeFactory, JerkFactory) {
     var accelID, geoID;
     var accelData = [];
     var geoData = [];
