@@ -8,24 +8,24 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var body = req.body
-  for (var i = 0; i < req.body.length; i++) {
-    knex('locations')
-    .insert({
-      latitude: req.body[i].latitude,
-      longitude: req.body[i].longitude,
-    }, 'location_id')
-    .then(function (id) {
+  knex('routes')
+  .max('route_id'). returning('route_id')
+  .then(function (id) {
+    if (id[0].max === null) id[0].max = 0;
+    Number(id[0].max);
+    for (var i = 0; i < body.length; i++) {
       knex('routes')
       .insert({
+        latitude: body[i].latitude,
+        longitude: body[i].longitude,
         jerk_value: body[i].jerk_value,
-        location_start: id,
-        location_end: id+1,
-      });
-    })
-    .then(function () {
-      res.end();
-    })
-  }
+        route_id: id[0].max+1,
+      })
+      .then(function () {
+        res.end();
+      })
+    }
+  })
 })
 
 module.exports = router;
