@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var dependencies = ['ionic', 'ngCordova', 'chart.js', 'ui.router'];
+  var dependencies = ['ionic', 'ngCordova', 'chart.js'];
 
   angular
   .module('bike', dependencies)

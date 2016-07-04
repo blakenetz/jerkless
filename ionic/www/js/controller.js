@@ -49,10 +49,7 @@
             JerkFactory.mergeData(accelData, geoData);
             JerkFactory.postData(accelData);
           }
-
-
-        }
-        else {
+        } else {
           accelData = [];
           geoData = [];
           xArray = [];

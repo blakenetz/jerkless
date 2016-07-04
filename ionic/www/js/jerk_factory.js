@@ -9,6 +9,13 @@
     return {
       mergeData: function (accelData, geoData) {
         for (var i = 0; i < accelData.length; i++) {
+          var magJerk = 0;
+          magJerk = Math.sqrt( Math.pow(accelData[i].x, 2) + Math.pow(accelData[i].y, 2) + Math.pow(accelData[i].z, 2) );
+          accelData[i].magJerk = magJerk;
+          delete accelData[i].x;
+          delete accelData[i].y;
+          delete accelData[i].z;
+          delete accelData[i].timestamp;
           if (geoData[i]) Object.assign(accelData[i], geoData[i])
         }
       },
