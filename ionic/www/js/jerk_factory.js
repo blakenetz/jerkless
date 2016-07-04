@@ -34,17 +34,31 @@
       },
 
       standardizeData: function(recordedData) {
+        var routes = [];
         var route = {};
         // var url = "https://jerkmaps.herokuapp.com";
-        var url = 'http://Blake.local';
+        var url = 'http://Blake.local:3000';
         var deferred = $q.defer();
+        var jerk_value = 0;
 
-        var jerk_value = Math.sqrt( Math.pow(recordedData[0][0].x, 2) + Math.pow(recordedData[0][1].y, 2) + Math.pow(recordedData[0][2].z, 2) );
-        route.location = [recordedData[0][4].latitude, recordedData[0][5].longitude];
-        route.jerk_value = jerk_value;
+
+        for (var i = 0; i < recordedData.length; i++) {
+          var counter = 1;
+          if (recordedData[i].length === 6) {
+            jerk_value = Math.sqrt( Math.pow(recordedData[i][0].x, 2) + Math.pow(recordedData[i][1].y, 2) + Math.pow(recordedData[i][2].z, 2) ) / counter;
+            route.jerk_value = jerk_value;
+            route.location = [recordedData[i][4].latitude, recordedData[i][5].longitude];
+            routes.push(route);
+            counter = 0;
+          } else {
+            jerk_value += ( Math.sqrt( Math.pow(recordedData[0][0].x, 2) + Math.pow(recordedData[0][1].y, 2) + Math.pow(recordedData[0][2].z, 2) ) );
+            counter++;
+          }
+        }
+        console.log(JSON.stringify(routes, null, 2));
 
         console.log('factory called');
-        $http.post(url)
+        $http.post(url, routes)
         .then(function (success) {
           deferred.resolve(success)
         })

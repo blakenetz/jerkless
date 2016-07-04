@@ -49,9 +49,7 @@
           var magJerk = JerkFactory.getMagJerk(recordedData);
           if (recordedData.length) {
             $scope.magJerk = magJerk;
-            JerkFactory.standardizeData(recordedData).then(function (response) {
-              console.log(response);
-            });
+            JerkFactory.standardizeData(recordedData);
           }
 
         }
