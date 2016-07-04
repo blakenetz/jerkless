@@ -9,9 +9,9 @@
     return {
       mergeData: function (accelData, geoData) {
         for (var i = 0; i < accelData.length; i++) {
-          var magJerk = 0;
-          magJerk = Math.sqrt( Math.pow(accelData[i].x, 2) + Math.pow(accelData[i].y, 2) + Math.pow(accelData[i].z, 2) );
-          accelData[i].magJerk = magJerk;
+          var jerk_value = 0;
+          jerk_value = Math.sqrt( Math.pow(accelData[i].x, 2) + Math.pow(accelData[i].y, 2) + Math.pow(accelData[i].z, 2) );
+          accelData[i].jerk_value = jerk_value;
           delete accelData[i].x;
           delete accelData[i].y;
           delete accelData[i].z;

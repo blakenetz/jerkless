@@ -6,8 +6,8 @@
     .setView([40.018, -105.27], 14);
 
   let line_points = [
-    [40.018, -105.27],
-    [40.020, -105.29],
+    [40.018, -105.27111],
+    [40.018, -105.27112],
   ]
   let polyline_options = { color: 'red' }
   let polyline = L.polyline(line_points, polyline_options).addTo(map);
