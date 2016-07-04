@@ -3,7 +3,7 @@ body{
 }
 
 header {
-  background: rgb(102, 147, 187);
+  background: #27C67E;
   height: 60px;
   display: flex;
   flex-flow: row nowrap;
@@ -15,8 +15,8 @@ header h3 {
 }
 
 #map {
+  margin-top: -17px;
   position: absolute;
   width: 100%;
   height: 80%;
-  margin-right: 30px;
 }

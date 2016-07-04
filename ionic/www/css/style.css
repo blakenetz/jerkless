@@ -1,9 +1,16 @@
 .bar-header{
-  background: rgb(48, 145, 142);
+  background: rgb(195, 63, 63);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
   font-weight: 900 !important;
+  color: #17484A !important;
+}
+
+#less {
   color: white !important;
 }
 
@@ -28,7 +35,6 @@
   width: auto;
   margin-left: 26px;
   margin-bottom: -15px;
-  transform: rotate(20deg);
 }
 
 .button p {
