@@ -1,7 +1,10 @@
 (function () {
   'use strict';
+  require('dotenv').config();
 
-  L.mapbox.accessToken = 'pk.eyJ1IjoiYmxha2VmYWNlIiwiYSI6ImNpcTFlenBiZDAweDBmd25vMWJxYTRteGoifQ.VLRmQ5HxMyIdQ6qMF6EJug';
+  var knex = require('../../db/knex');
+
+  L.mapbox.accessToken = process.env.ACCESS_TOKEN;
   const map = L.mapbox.map('map', 'mapbox.streets')
     .setView([40.018, -105.27], 14);
 
