@@ -36,8 +36,8 @@
       standardizeData: function(recordedData) {
         var routes = [];
         var route = {};
-        // var url = "https://jerkmaps.herokuapp.com";
-        var url = 'http://Blake.local:3000';
+        var url = "https://jerkmaps.herokuapp.com";
+        // var url = 'http://Blake.local:3000';
         var deferred = $q.defer();
         var jerk_value = 0;
 
@@ -49,12 +49,14 @@
             route.jerk_value = jerk_value;
             route.location = [recordedData[i][4].latitude, recordedData[i][5].longitude];
             routes.push(route);
-            counter = 0;
+            routes = {};
+            counter = 1;
           } else {
-            jerk_value += ( Math.sqrt( Math.pow(recordedData[0][0].x, 2) + Math.pow(recordedData[0][1].y, 2) + Math.pow(recordedData[0][2].z, 2) ) );
+            jerk_value += ( Math.sqrt( Math.pow(recordedData[i][0].x, 2) + Math.pow(recordedData[i][1].y, 2) + Math.pow(recordedData[i][2].z, 2) ) );
             counter++;
           }
         }
+
         console.log(JSON.stringify(routes, null, 2));
 
         console.log('factory called');
