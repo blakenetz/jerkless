@@ -4,10 +4,9 @@
   .module('bike')
   .factory('JerkFactory', JerkFactory);
 
-  JerkFactory.$inject = ['$http'];
-  function JerkFactory($http) {
+  JerkFactory.$inject = ['$http', '$q'];
+  function JerkFactory($http, $q) {
     return {
-
       getMagJerk: function(recordedData) {
         var magJerkArray = [];
         var jerkSqr = 0;
@@ -37,18 +36,24 @@
       standardizeData: function(recordedData) {
         var route = {};
         // var url = "https://jerkmaps.herokuapp.com";
-        var url = "http://localhost:3000";
 
         var jerk_value = Math.sqrt( Math.pow(recordedData[0][0].x, 2) + Math.pow(recordedData[0][1].y, 2) + Math.pow(recordedData[0][2].z, 2) );
         route.location = [recordedData[0][4].latitude, recordedData[0][5].longitude];
         route.jerk_value = jerk_value;
-        console.log(JSON.stringify(route));
 
-        $http.post(url+"/addroute", route).then(function successCallback(response) {
-          console.log('success', response);
-        }, function errorCallback(err) {
-          console.warn(JSON.stringify(err, null, 2));
-        });
+        console.log('factory called');
+        // console.log(JSON.stringify(route));
+
+        var url = "http://localhost:3000";
+        var deferred = $q.defer();
+        $http.get(url)
+        .then(function (success) {
+          deferred.resolve(success)
+        })
+        .catch(function (err) {
+          deferred.reject(err)
+        })
+        return deferred.promise;
       },
     }
   }
