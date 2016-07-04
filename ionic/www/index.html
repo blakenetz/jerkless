@@ -22,8 +22,7 @@
   <script src="js/module.js"></script>
 
   <!-- angular factories -->
-  <script src="js/accel_factory.js"></script>
-  <script src="js/geo_factory.js"></script>
+  <script src="js/chart_factory.js"></script>
   <script src="js/time_factory.js"></script>
   <script src="js/jerk_factory.js"></script>
 
@@ -34,7 +33,7 @@
 
   <ion-pane>
     <div class="bar bar-header">
-      <h1 class="title">Jerk-less</h1>
+      <h1 class="title">Jerk<span id="less">Less</span></h1>
     </div>
     <ion-content>
       <div class="card">
@@ -46,7 +45,7 @@
         </div>
       </div>
       <div class="magJerk-holder">
-        <h4> Avg. Mag-Jerk: {{magJerk}}</h4>
+        <h4>Jerk Magnitude: {{magJerk}}</h4>
       </div>
       <div class="button-wrapper">
         <button class="button button-large" ng-click="activate()">

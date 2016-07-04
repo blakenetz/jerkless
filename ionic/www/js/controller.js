@@ -4,8 +4,8 @@
   .module('bike')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', 'AccelFactory', 'GeoFactory', 'TimeFactory', 'JerkFactory'];
-  function MainCtrl($scope, AccelFactory, GeoFactory, TimeFactory, JerkFactory) {
+  MainCtrl.$inject = ['$scope', 'ChartFactory', 'TimeFactory', 'JerkFactory'];
+  function MainCtrl($scope, ChartFactory, TimeFactory, JerkFactory) {
     var accelID, geoID;
     var accelData = [];
     var geoData = [];
@@ -17,7 +17,7 @@
     var interval = 250;
     var accelOptions = { frequency: interval };
     var geoOptions = { enableHighAccuracy: true };
-    var geoObj = { latitude: null, longitude: null, timestamp: null };
+    var geoObj = { latitude: null, longitude: null };
 
     $scope.chartData = [xArray, yArray, zArray];
     $scope.labels = timeArray;
@@ -31,26 +31,26 @@
         if (active) {
           $scope.status = "Turn On";
           navigator.accelerometer.clearWatch(accelID);
-          navigator.geolocation.clearWatch(geoID);
+          clearInterval(geoID);
 
-          newAccelData = AccelFactory.getAccelData(accelData, interval);
-          xArray = newAccelData.xArray;
-          yArray = newAccelData.yArray;
-          zArray = newAccelData.zArray;
-          timeArray = newAccelData.timeArray;
-          recordedData = newAccelData.recordedData;
-
-          GeoFactory.getGeoData(geoData, recordedData);
+          mapData = ChartFactory.getMapData(accelData, interval);
+          xArray = mapData.xArray;
+          yArray = mapData.yArray;
+          zArray = mapData.zArray;
+          timeArray = mapData.timeArray;
+          recordedData = mapData.recordedData;
           $scope.chartData = [xArray, yArray, zArray];
 
           if (timeArray.length) timeArray = TimeFactory.adjustTimeArray(timeArray);
           $scope.labels = timeArray;
 
-          var magJerk = JerkFactory.getMagJerk(recordedData);
+          var magJerk = ChartFactory.getMagJerk(recordedData);
           if (recordedData.length) {
             $scope.magJerk = magJerk;
             JerkFactory.standardizeData(recordedData);
           }
+
+          JerkFactory.mergeData(accelData, geoData);
 
         }
         else {
@@ -63,10 +63,14 @@
           recordedData = [];
           $scope.status = "Turn Off";
           accelID = navigator.accelerometer.watchAcceleration(accelSuccess, accelFail, accelOptions);
-          geoID = navigator.geolocation.watchPosition(geoSuccess, geoFail, geoOptions);
+          geoID = setInterval(getCurrentPosition, interval)
         }
         active = !active;
       }
+    }
+
+    function getCurrentPosition() {
+      navigator.geolocation.getCurrentPosition(geoSuccess, geoFail, geoOptions)
     }
 
     function accelSuccess(results) {
@@ -75,12 +79,10 @@
     function geoSuccess(position) {
       geoObj.latitude = position.coords.latitude;
       geoObj.longitude = position.coords.longitude;
-      geoObj.timestamp = position.timestamp;
       geoData.push(geoObj);
       geoObj = {
         latitude: null,
         longitude: null,
-        timestamp: null
       }
     }
 

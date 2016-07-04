@@ -3,13 +3,13 @@
 
   angular
   .module('bike')
-  .factory('AccelFactory', AccelFactory);
+  .factory('ChartFactory', ChartFactory);
 
-  AccelFactory.$inject = [];
-  function AccelFactory() {
+  ChartFactory.$inject = [];
+  function ChartFactory() {
     return {
 
-      getAccelData: function(data, interval) {
+      getMapData: function(data, interval) {
         var recordedData = [];
         var jerk;
         var xArray = [];
@@ -41,7 +41,31 @@
         }
         return { recordedData, xArray, yArray, zArray, timeArray };
       },
+      getMagJerk: function(recordedData) {
+        var magJerkArray = [];
+        var jerkSqr = 0;
+        var sum = 0;
 
+        for (var i = 0; i < recordedData.length; i++) {
+          for (var j = 0; j < recordedData[i].length; j++) {
+            for (var dataPoint in recordedData[i][j]) {
+              if (dataPoint==='x' || dataPoint==='y' || dataPoint==='z') {
+                jerkSqr += Math.pow(recordedData[i][j][dataPoint], 2);
+              }
+              if (dataPoint==='timestamp') {
+                jerkSqr = Math.sqrt(jerkSqr);
+                magJerkArray.push(jerkSqr);
+                jerkSqr = 0;
+              }
+            }
+          }
+        }
+        for (var i = 0; i < magJerkArray.length; i++) {
+          sum += magJerkArray[i]
+        }
+        var magJerk = (sum/magJerkArray.length).toFixed(2);
+        return magJerk;
+      },
     }
   }
 })()

@@ -1,9 +1,16 @@
 .bar-header{
   background: rgb(195, 63, 63);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
   font-weight: 900 !important;
+  color: #17484A !important;
+}
+
+#less {
   color: white !important;
 }
 

@@ -7,36 +7,17 @@
   JerkFactory.$inject = ['$http', '$q'];
   function JerkFactory($http, $q) {
     return {
-      getMagJerk: function(recordedData) {
-        var magJerkArray = [];
-        var jerkSqr = 0;
-        var sum = 0;
-
-        for (var i = 0; i < recordedData.length; i++) {
-          for (var j = 0; j < recordedData[i].length; j++) {
-            for (var dataPoint in recordedData[i][j]) {
-              if (dataPoint==='x' || dataPoint==='y' || dataPoint==='z') {
-                jerkSqr += Math.pow(recordedData[i][j][dataPoint], 2);
-              }
-              if (dataPoint==='timestamp') {
-                jerkSqr = Math.sqrt(jerkSqr);
-                magJerkArray.push(jerkSqr);
-                jerkSqr = 0;
-              }
-            }
-          }
+      mergeData: function (accelData, geoData) {
+        for (var i = 0; i < accelData.length; i++) {
+          if (geoData[i]) Object.assign(accelData[i], geoData[i])
         }
-        for (var i = 0; i < magJerkArray.length; i++) {
-          sum += magJerkArray[i]
-        }
-        var magJerk = (sum/magJerkArray.length).toFixed(2);
-        return magJerk;
+        console.log(JSON.stringify(accelData, null, 2));
       },
 
       standardizeData: function(recordedData) {
         var routes = [];
-        var url = "https://jerkmaps.herokuapp.com";
-        // var url = 'http://Blake.local:3000';
+        // var url = "https://jerkmaps.herokuapp.com";
+        var url = 'http://Blake.local:3000';
         var deferred = $q.defer();
         var jerk_value = 0;
         var counter = 1;
