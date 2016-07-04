@@ -38,19 +38,18 @@
           yArray = mapData.yArray;
           zArray = mapData.zArray;
           timeArray = mapData.timeArray;
-          recordedData = mapData.recordedData;
           $scope.chartData = [xArray, yArray, zArray];
 
           if (timeArray.length) timeArray = TimeFactory.adjustTimeArray(timeArray);
           $scope.labels = timeArray;
 
-          var magJerk = ChartFactory.getMagJerk(recordedData);
-          if (recordedData.length) {
+          if (accelData.length) {
+            var magJerk = ChartFactory.getMagJerk(accelData);
             $scope.magJerk = magJerk;
-            JerkFactory.standardizeData(recordedData);
+            JerkFactory.mergeData(accelData, geoData);
+            JerkFactory.postData(accelData);
           }
 
-          JerkFactory.mergeData(accelData, geoData);
 
         }
         else {
