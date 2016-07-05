@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="jerk">
+<head>
+  <meta charset="utf-8">
+  <title>Jerk Map</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- Mapbox -->
+  <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+
+  <!-- angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js" charset="utf-8"></script>
+  <script src="/jerk_module.js" charset="utf-8" type="text/javascript"></script>
+  <script src="/jerk_controller.js" charset="utf-8" type="text/javascript"></script>
+</head>
+<body ng-controller="JerkCtrl">
+  <header>
+    <h3>Jerk-less</h3>
+  </header>
+  <div class="body-wrapper">
+    <div id='map'></div>
+    <p>
+      Jerk-less is an ios tool that measures acceleration “jerks”
+    </p>
+  </div>
+</body>
+</html>

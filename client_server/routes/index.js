@@ -2,16 +2,17 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 
-router.get('/', function(req, res, next) {
-  var routes = knex.select('*').table('routes');
-  console.log(routes);
-  res.render('index', { routes })
-});
+// router.get('/line-points', function(req,res,next) {
+//   knex('line-points')
+//   .then(function(linePoints) {
+//     res.json(linePoints);
+//   })
+// })
 
 router.post('/', function(req, res, next) {
   var body = req.body
   knex('routes')
-  .max('route_id'). returning('route_id')
+  .max('route_id').returning('route_id')
   .then(function (id) {
     if (id[0].max === null) id[0].max = 0;
     Number(id[0].max);
