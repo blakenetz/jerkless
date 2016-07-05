@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 
-// router.get('/line-points', function(req,res,next) {
-//   knex('line-points')
-//   .then(function(linePoints) {
-//     res.json(linePoints);
-//   })
-// })
+router.get('/routes', function(req,res,next) {
+  knex('routes')
+  .then(function(routes) {
+    res.json(routes);
+  })
+})
 
 router.post('/', function(req, res, next) {
   var body = req.body
