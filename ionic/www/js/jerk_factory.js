@@ -21,8 +21,8 @@
       },
 
       postData: function (accelData) {
-        var url = "https://jerkmaps.herokuapp.com";
-        // var url = 'http://Blake.local:3000';
+        // var url = "https://jerkmaps.herokuapp.com";
+        var url = 'http://Blake.local:3000';
         var deferred = $q.defer();
 
         $http.post(url, accelData)

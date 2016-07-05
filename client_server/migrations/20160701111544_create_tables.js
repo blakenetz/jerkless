@@ -2,14 +2,11 @@ exports.up = function(knex, Promise) {
   return knex.schema
   .createTable('routes', function(table){
     table.increments('id');
-    table.decimal('latitude', 8, 5);
-    table.decimal('longitude', 8, 5);
-    table.decimal('jerk_value', 7, 3);
-    table.integer('route_id');
+    table.json('route_details');
   })
 };
 
 exports.down = function(knex, Promise) {
   return knex.schema
-  .dropTable('routes')
+  .dropTable('routes');
 };
