@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'frenchy';
+    src: url('fonts/frenchy.eot');
+    src: url('fonts/frenchy.eot') format('embedded-opentype'),
+         url('fonts/frenchy.woff2') format('woff2'),
+         url('fonts/frenchy.woff') format('woff'),
+         url('fonts/frenchy.ttf') format('truetype'),
+         url('fonts/frenchy.svg#frenchy') format('svg');
+}
