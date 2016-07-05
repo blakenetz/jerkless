@@ -24,18 +24,18 @@
             routes[i].push([+linepoints.data[i].latitude, +linepoints.data[i].longitude]);
             colors[i].push({
               color: getColor(+linepoints.data[i].jerk_value),
-              smoothFactor: 5,
+              smoothFactor: 15,
               clickable: false,
-              weight: 3, 
+              weight: 3,
             })
           }
           else if (linepoints.data[i].route_id === linepoints.data[i-1].route_id) {
             routes[linepoints.data[i].route_id-1].push([+linepoints.data[i].latitude, +linepoints.data[i].longitude]);
             colors[linepoints.data[i].route_id-1].push({
               color: getColor(+linepoints.data[i].jerk_value),
-              smoothFactor: 5,
+              smoothFactor: 15,
               clickable: false,
-              weight: 3, 
+              weight: 3,
             })
           }
           else {
@@ -44,9 +44,9 @@
             routes[linepoints.data[i].route_id-1].push([+linepoints.data[i].latitude, +linepoints.data[i].longitude]);
             colors[linepoints.data[i].route_id-1].push({
               color: getColor(+linepoints.data[i].jerk_value),
-              smoothFactor: 5,
+              smoothFactor: 15,
               clickable: false,
-              weight: 3, 
+              weight: 3,
             })
           }
         }
