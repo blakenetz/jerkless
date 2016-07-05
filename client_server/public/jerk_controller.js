@@ -19,7 +19,6 @@
     .then(function(linepoints) {
       for (var i = 0; i < linepoints.data.length; i++) {
         if (linepoints.data[i].latitude && linepoints.data[i].longitude) {
-          console.log(linepoints.data[i].jerk_value);
           if (i === 0)  {
             routes[i].push([+linepoints.data[i].latitude, +linepoints.data[i].longitude]);
             colors[i].push({
