@@ -6,12 +6,13 @@
 }
 
 .title {
-  font-weight: 900 !important;
-  color: #17484A !important;
+  font-family: frenchy;
+  color: white !important;
 }
 
-#less {
-  color: white !important;
+#jerk {
+  color: black !important;
+  text-shadow: 1px 1px 1px black;
 }
 
 .button-wrapper {

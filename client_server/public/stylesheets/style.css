@@ -3,7 +3,7 @@ body{
 }
 
 header {
-  background: #27C67E;
+  background: rgb(195, 63, 63);
   height: 60px;
   display: flex;
   flex-flow: row nowrap;
@@ -12,6 +12,9 @@ header {
 
 header h3 {
   margin-left: 20px;
+  font-family: frenchy;
+  font-size: 40px;
+  color: white;
 }
 
 #map {
@@ -19,4 +22,9 @@ header h3 {
   position: absolute;
   width: 100%;
   height: 80%;
+}
+
+#jerk {
+  text-shadow: 1px 1px 1px black;
+  color: black;
 }
