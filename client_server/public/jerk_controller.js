@@ -21,14 +21,24 @@
         routes.push([])
         colors.push([])
         for (var j = 0; j < linepoints.data[i].route_details.length; j++) {
+          console.log(linepoints.data[i].route_details[j].jerk_value);
           if (linepoints.data[i].route_details[j].latitude && linepoints.data[i].route_details[j].longitude) {
             routes[i].push([+linepoints.data[i].route_details[j].latitude, +linepoints.data[i].route_details[j].longitude])
-            colors[i].push({
-              color: getColor(+linepoints.data[i].route_details[j].jerk_value),
-              smoothFactor: 15,
-              clickable: false,
-              weight: 3,
-            })
+            if (!linepoints.data[i].mtn_bike) {
+              colors[i].push({
+                color: getColor(+linepoints.data[i].route_details[j].jerk_value),
+                smoothFactor: 15,
+                clickable: false,
+                weight: 3,
+              })
+            } else {
+              colors[i].push({
+                color: getMtnColor(+linepoints.data[i].route_details[j].jerk_value),
+                smoothFactor: 15,
+                clickable: false,
+                weight: 3,
+              })
+            }
           }
         }
       }
@@ -45,6 +55,12 @@
       if (jerk_value < 10) return 'green';
       if (jerk_value >= 10 && jerk_value < 20) return 'yellow';
       if (jerk_value >= 20) return 'red';
+    }
+
+    function getMtnColor(jerk_value) {
+      if (jerk_value < 30) return 'green';
+      if (jerk_value >= 30 && jerk_value < 60) return 'yellow';
+      if (jerk_value >= 60) return 'red';
     }
   }
 })()
