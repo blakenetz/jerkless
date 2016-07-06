@@ -18,10 +18,10 @@
     var accelOptions = { frequency: interval };
     var geoOptions = { enableHighAccuracy: true };
     var geoObj = { latitude: null, longitude: null };
+    var circle = angular.element(document.getElementById("button-internal"));
 
     $scope.chartData = [xArray, yArray, zArray];
     $scope.labels = timeArray;
-    $scope.status = "Turn On";
     $scope.magJerk = 0;
     $scope.mtnBike = false;
     $scope.toggleMtnBike = function () {
@@ -34,10 +34,9 @@
 
       $scope.activate = function () {
         if (active) {
-          $scope.status = "Turn On";
           navigator.accelerometer.clearWatch(accelID);
           clearInterval(geoID);
-          clearInterval(buttonID);
+          changeClass(circle);
 
           mapData = ChartFactory.getMapData(accelData, interval);
           xArray = mapData.xArray;
@@ -64,21 +63,22 @@
           zArray = [];
           timeArray = [];
           recordedData = [];
-          $scope.status = "Turn Off";
+          changeClass(circle);
           accelID = navigator.accelerometer.watchAcceleration(accelSuccess, accelFail, accelOptions);
           geoID = setInterval(getCurrentPosition, interval);
-          buttonID = setInterval(changeClass, interval)
         }
 
         active = !active;
       }
     }
 
+    console.log(JSON.stringify(circle.className));
     console.log(circle.className);
+    console.log(circle);
 
-    function changeClass() {
-      if (circle.className === 'stateOne') return circle.className = 'stateTwo';
-      else return circle.className = 'stateOne';
+    function changeClass(el) {
+      if (el.className === 'on') el.className = 'off';
+      else el.className = 'on';
     }
 
     function getCurrentPosition() {

@@ -50,12 +50,12 @@
       </div>
       <div class="button-wrapper">
         <button class="button button-large" ng-click="activate()">
-          <div class="button-internal">
-            <img src="img/bicycle.png" alt="bike">
-            <p>{{status}}</p>
+          <div id="button-internal">
+            <img src="img/bicycle.png" alt="bike" class="on">
+            <p class="off">Turn off</p>
           </div>
         </button>
-        <div id="circle" class="stateOne"></div>
+        <div class="red"></div>
       </div>
       <ion-toggle ng-model="mtnBike" ng-change="toggleMtnBike()" toggle-class="toggle-assertive">
         Mountain Bike
