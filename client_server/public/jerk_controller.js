@@ -21,7 +21,6 @@
         routes.push([])
         colors.push([])
         for (var j = 0; j < linepoints.data[i].route_details.length; j++) {
-          console.log(linepoints.data[i].route_details[j].jerk_value);
           if (linepoints.data[i].route_details[j].latitude && linepoints.data[i].route_details[j].longitude) {
             routes[i].push([+linepoints.data[i].route_details[j].latitude, +linepoints.data[i].route_details[j].longitude])
             if (!linepoints.data[i].mtn_bike) {
