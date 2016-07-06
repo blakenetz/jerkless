@@ -23,12 +23,19 @@
     $scope.labels = timeArray;
     $scope.status = "Turn On";
     $scope.magJerk = 0;
+    $scope.mtnBike = false;
+    $scope.toggleMtnBike = function () {
+      if ($scope.mtnBike === false) $scope.mtnBike = true;
+      else $scope.mtnBike = false;
+    }
 
+    console.log($scope.mtnBike);
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
 
       $scope.activate = function () {
         if (active) {
+          console.log($scope.mtnBike);
           $scope.status = "Turn On";
           navigator.accelerometer.clearWatch(accelID);
           clearInterval(geoID);
@@ -50,6 +57,7 @@
             JerkFactory.postData(accelData);
           }
         } else {
+          console.log($scope.mtnBike);
           accelData = [];
           geoData = [];
           xArray = [];
