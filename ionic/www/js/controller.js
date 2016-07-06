@@ -32,6 +32,7 @@
           $scope.status = "Turn On";
           navigator.accelerometer.clearWatch(accelID);
           clearInterval(geoID);
+          clearInterval(buttonID);
 
           mapData = ChartFactory.getMapData(accelData, interval);
           xArray = mapData.xArray;
@@ -59,10 +60,20 @@
           recordedData = [];
           $scope.status = "Turn Off";
           accelID = navigator.accelerometer.watchAcceleration(accelSuccess, accelFail, accelOptions);
-          geoID = setInterval(getCurrentPosition, interval)
+          geoID = setInterval(getCurrentPosition, interval);
+          buttonID = setInterval(changeClass, interval)
         }
+
         active = !active;
       }
+    }
+
+    console.log(JSON.stringify(circle));
+    console.log(circle);
+
+    function changeClass() {
+      if (circle.className === 'stateOne') circle.className = 'stateTwo';
+      else circle.className = 'stateOne';
     }
 
     function getCurrentPosition() {

@@ -20,6 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-flow: column nowrap;
 }
 
 .button {
@@ -30,6 +31,7 @@
   height: 210px;
   border-radius: 50%;
   border: 5px solid black;
+  margin: 0px;
 }
 
 .button img {
@@ -59,4 +61,24 @@
   align-items: center;
   justify-content: center;
   margin-top: -20px;
+}
+
+.stateOne {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.stateTwo {
+  opacity: .5;
+  transform: scale(1.9, 1.9);
+}
+
+#circle {
+  margin-top: -210px;
+  z-index: -1;
+  background-color: rgb(195, 63, 63);
+  border-radius: 50%;
+  height: 210px;
+  width: 210px;
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 }
