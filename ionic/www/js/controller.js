@@ -74,7 +74,6 @@
           geoID = setInterval(getCurrentPosition, interval);
           buttonID = setInterval(changeClass, 500)
         }
-
         active = !active;
       }
     }
