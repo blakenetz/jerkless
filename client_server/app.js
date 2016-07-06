@@ -10,7 +10,7 @@ var routes = require('./routes/index');
 
 var app = express();
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'bicycle.ico')));
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
