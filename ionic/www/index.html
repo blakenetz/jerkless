@@ -36,7 +36,7 @@
     <div class="bar bar-header">
       <h1 class="title"><span id="jerk">Jerk</span> Less</h1>
     </div>
-    <ion-content>
+    <ion-content scroll="false">
       <div class="card">
         <div class="item item-divider">
           Jerk Values
@@ -57,6 +57,9 @@
         </button>
         <div id="circle" class="stateOne"></div>
       </div>
+      <ion-toggle ng-model="mtnBike" ng-change="toggleMtnBike()" toggle-class="toggle-assertive">
+        Mountain Bike
+      </ion-toggle>
     </ion-content>
   </ion-pane>
 </body>

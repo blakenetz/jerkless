@@ -21,14 +21,15 @@
   align-items: center;
   justify-content: center;
   flex-flow: column nowrap;
+  margin-bottom: 5px;
 }
 
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 210px;
-  height: 210px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 5px solid black;
   margin: 0px;
@@ -54,6 +55,7 @@
 
 .card {
   margin-top: 70px;
+  height: 200px;
 }
 
 .magJerk-holder{
@@ -74,11 +76,16 @@
 }
 
 #circle {
-  margin-top: -210px;
+  margin-top: -200px;
   z-index: -1;
   background-color: rgb(195, 63, 63);
   border-radius: 50%;
-  height: 210px;
-  width: 210px;
+  height: 200px;
+  width: 200px;
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+ion-toggle {
+  position: absolute;
+  bottom: 0;
 }

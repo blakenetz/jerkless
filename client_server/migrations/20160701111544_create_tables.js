@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
   .createTable('routes', function(table){
     table.increments('id');
     table.json('route_details');
+    table.boolean('mtn_bike');
   })
 };
 

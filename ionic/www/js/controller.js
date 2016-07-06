@@ -23,6 +23,11 @@
     $scope.labels = timeArray;
     $scope.status = "Turn On";
     $scope.magJerk = 0;
+    $scope.mtnBike = false;
+    $scope.toggleMtnBike = function () {
+      if ($scope.mtnBike === false) $scope.mtnBike = true;
+      else $scope.mtnBike = false;
+    }
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
@@ -48,6 +53,7 @@
             var magJerk = ChartFactory.getMagJerk(accelData);
             $scope.magJerk = magJerk;
             JerkFactory.mergeData(accelData, geoData);
+            accelData.push($scope.mtnBike);
             JerkFactory.postData(accelData);
           }
         } else {
@@ -68,12 +74,11 @@
       }
     }
 
-    console.log(JSON.stringify(circle));
-    console.log(circle);
+    console.log(circle.className);
 
     function changeClass() {
-      if (circle.className === 'stateOne') circle.className = 'stateTwo';
-      else circle.className = 'stateOne';
+      if (circle.className === 'stateOne') return circle.className = 'stateTwo';
+      else return circle.className = 'stateOne';
     }
 
     function getCurrentPosition() {

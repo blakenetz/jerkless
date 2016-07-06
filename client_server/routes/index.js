@@ -10,8 +10,12 @@ router.get('/routes', function(req,res,next) {
 })
 
 router.post('/', function(req, res, next) {
+  var mtnBike = req.body.pop();
   knex('routes')
-  .insert({route_details: JSON.stringify(req.body)})
+  .insert({
+    route_details: JSON.stringify(req.body),
+    mtn_bike: mtnBike
+  })
   .then(function () {
     res.end();
   })

@@ -1,6 +1,5 @@
 (function () {
-  'use strict';
-  const dependencies = [];
-  
+  var dependencies = [];
+
   angular.module('jerk', dependencies);
 })()
