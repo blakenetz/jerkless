@@ -72,7 +72,7 @@
 
 .off {
   opacity: .5;
-  transform: scale(2, 2);
+  transform: scale(1.3, 1.3);
 }
 
 .red {

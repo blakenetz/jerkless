@@ -6,7 +6,7 @@
 
   MainCtrl.$inject = ['$scope', 'ChartFactory', 'TimeFactory', 'JerkFactory'];
   function MainCtrl($scope, ChartFactory, TimeFactory, JerkFactory) {
-    var accelID, geoID;
+    var accelID, geoID, buttonID;
     var accelData = [];
     var geoData = [];
     var xArray = [];
@@ -36,7 +36,8 @@
         if (active) {
           navigator.accelerometer.clearWatch(accelID);
           clearInterval(geoID);
-          changeClass(circle);
+          clearInterval(buttonID);
+          circle.className = 'stateOne';
 
           mapData = ChartFactory.getMapData(accelData, interval);
           xArray = mapData.xArray;
@@ -66,19 +67,16 @@
           changeClass(circle);
           accelID = navigator.accelerometer.watchAcceleration(accelSuccess, accelFail, accelOptions);
           geoID = setInterval(getCurrentPosition, interval);
+          buttonID = setInterval(changeClass, 500)
         }
 
         active = !active;
       }
     }
 
-    console.log(JSON.stringify(circle.className));
-    console.log(circle.className);
-    console.log(circle);
-
-    function changeClass(el) {
-      if (el.className === 'on') el.className = 'off';
-      else el.className = 'on';
+    function changeClass() {
+      if (circle.className === 'stateOne') return circle.className = 'stateTwo';
+      else return circle.className = 'stateOne';
     }
 
     function getCurrentPosition() {
