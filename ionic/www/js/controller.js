@@ -28,6 +28,10 @@
       if ($scope.mtnBike === false) $scope.mtnBike = true;
       else $scope.mtnBike = false;
     }
+    $scope.toggleSetting = function () {
+      if (setting.className === 'off') setting.className = 'on';
+      else setting.className = 'off';
+    }
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {

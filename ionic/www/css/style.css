@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   flex-flow: column nowrap;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .button {
@@ -62,7 +62,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -20px;
+  margin-top: -15px;
 }
 
 .stateOne {
@@ -85,7 +85,23 @@
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 }
 
-ion-toggle {
+.cog {
   position: absolute;
-  bottom: 0;
+  top: 5px;
+  right: 10px;
+  height: 30px;
+  width: auto;
+}
+
+.on {
+  visibility: visible;
+}
+
+.off {
+  visibility: hidden;
+}
+
+.setting ion-toggle{
+  margin-bottom: 25px;
+  padding: 0px;
 }
