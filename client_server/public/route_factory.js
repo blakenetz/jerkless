@@ -23,7 +23,7 @@
                 if (!linepoints.data[i].mtn_bike) {
                   colors[i].push({
                     color: getColor(+linepoints.data[i].route_details[j].jerk_value),
-                    smoothFactor: 100,
+                    smoothFactor: 10,
                     clickable: false,
                   })
                 } else {
