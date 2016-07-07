@@ -17,9 +17,11 @@
     '&query=brewery' +
     '&m=foursquare';
     var beer = false;
+    var limit = 0;
+    var count = 0;
 
     L.mapbox.accessToken = 'pk.eyJ1IjoiYmxha2VmYWNlIiwiYSI6ImNpcTFlenBiZDAweDBmd25vMWJxYTRteGoifQ.VLRmQ5HxMyIdQ6qMF6EJug';
-    var map = L.mapbox.map('map', 'mapbox.streets')
+    var map = L.mapbox.map('map', 'mapbox.light')
     .setView(latlon, 14);
 
     map.attributionControl
@@ -36,8 +38,8 @@
             var latlng = L.latLng(venue.location.lat, venue.location.lng);
             var marker = L.marker(latlng, {
               icon: L.mapbox.marker.icon({
-                'marker-color': '#FFDD00',
-                'marker-symbol': 'heart',
+                'marker-color': '#6BAAAA',
+                'marker-symbol': 'beer',
                 'marker-size': 'large'
               })
             })
@@ -59,6 +61,7 @@
         routes.push([])
         colors.push([])
         for (var j = 0; j < linepoints.data[i].route_details.length; j++) {
+          limit++;
           if (linepoints.data[i].route_details[j].latitude && linepoints.data[i].route_details[j].longitude) {
             routes[i].push([+linepoints.data[i].route_details[j].latitude, +linepoints.data[i].route_details[j].longitude])
             if (!linepoints.data[i].mtn_bike) {
@@ -73,7 +76,6 @@
                 color: getMtnColor(+linepoints.data[i].route_details[j].jerk_value),
                 smoothFactor: 15,
                 clickable: false,
-                weight: 3,
               })
             }
           }
@@ -81,12 +83,23 @@
       }
       for (var i = 0; i < routes.length; i++) {
         for (var j = 1; j < routes[i].length; j++) {
-          var line_points = [ routes[i][j-1], routes[i][j] ];
-          var polyline_options = colors[i][j];
-          var polyline = L.polyline(line_points, polyline_options).addTo(map);
+          window.setTimeout(drawLines(routes, i, j), 100 * j)
         }
       }
     })
+
+    function drawLines(routes, i, j) {
+      var line_points = [ routes[i][j-1], routes[i][j] ];
+      var polyline_options = colors[i][j];
+      var polyline = L.polyline(line_points, polyline_options).addTo(map);
+    }
+
+    var line_points = [
+      [40.018, -105.27],
+      [40.018, -105.28]
+    ];
+    var polyline_options = { color: 'red' };
+    var polyline = L.polyline(line_points, polyline_options).addTo(map);
 
     function getColor(jerk_value) {
       if (jerk_value < 10) return 'green';
