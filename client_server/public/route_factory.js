@@ -11,9 +11,10 @@
     var count = 0;
     var routes = [];
     var colors = [];
+    var polyline = L.polyline([]).addTo(map);
 
     return {
-      drawLines: function (map) {
+      drawRoutes: function (map) {
         $http.get('/routes')
         .then(function(linepoints) {
           for (var i = 0; i < linepoints.data.length; i++) {
@@ -41,8 +42,8 @@
             }
           }
           for (var i = 0; i < routes.length; i++) {
-            for (let j = 1; j < routes[i].length; j++) {
-              window.setTimeout(drawLines(routes, i, j), 100*j)
+            for (var j = 1; j < routes[i].length; j++) {
+              window.setTimeout(drawLines(routes, i, j), 100)
             }
           }
 
@@ -59,9 +60,12 @@
           }
 
           function drawLines(routes, i, j) {
-            var line_points = [ routes[i][j-1], routes[i][j] ];
+            console.log(  );
+            var line_points = routes[i][j-1], routes[i][j];
             var polyline_options = colors[i][j];
-            var polyline = L.polyline(line_points, polyline_options).addTo(map);
+            polyline.addPolyline(
+              L.latLng(line_points))
+              // L.color(polyline_options))
           }
         })
       },

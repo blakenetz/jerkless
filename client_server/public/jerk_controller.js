@@ -19,6 +19,6 @@
     $scope.beer = function () {
       MarkerFactory.placeMarkers(latlon, map, foursquarePlaces);
     }
-    RouteFactory.drawLines(map)
+    RouteFactory.drawRoutes(map)
   }
 })()
