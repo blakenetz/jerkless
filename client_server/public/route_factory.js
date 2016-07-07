@@ -41,7 +41,7 @@
           }
           for (var i = 0; i < routes.length; i++) {
             for (var j = 1; j < routes[i].length; j++) {
-              window.setInterval(drawLines(routes, i, j), 100)
+              window.setInterval(drawLines(routes, i, j), 100*j)
             }
           }
 
