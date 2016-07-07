@@ -40,8 +40,8 @@
             }
           }
           for (var i = 0; i < routes.length; i++) {
-            for (let j = 1; j < routes[i].length; j++) {
-              window.setTimeout(drawLines(routes, i, j), 100 * j)
+            for (var j = 1; j < routes[i].length; j++) {
+              window.setInterval(drawLines(routes, i, j), 100)
             }
           }
 
