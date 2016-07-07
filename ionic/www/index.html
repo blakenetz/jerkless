@@ -49,15 +49,15 @@
       <div class="magJerk-holder">
         <h4>Jerk Magnitude: {{magJerk}}</h4>
       </div>
-      <div class="button-wrapper">
-        <button class="button button-large" ng-click="activate()">
-          <div class="button-internal">
-            <img src="img/bicycle.png" alt="bike">
-            <p>{{status}}</p>
-          </div>
-        </button>
-        <div id="circle" class="stateOne"></div>
-      </div>
+        <div class="button-wrapper">
+          <button class="button button-large" ng-click="activate()">
+            <div class="button-internal">
+              <img src="img/bicycle.png" alt="bike">
+              <p>{{status}}</p>
+            </div>
+          </button>
+          <div id="circle" class="stateOne"></div>
+        </div>
       <div id="setting" class="off">
         <ion-toggle ng-model="mtnBike" ng-change="toggleMtnBike()" toggle-class="toggle-assertive">
           Mountain Bike

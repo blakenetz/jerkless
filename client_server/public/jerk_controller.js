@@ -16,16 +16,15 @@
     '&ll=' + latlon +
     '&query=brewery' +
     '&m=foursquare';
-    var beer = false;
 
+    var beer = false;
     L.mapbox.accessToken = 'pk.eyJ1IjoiYmxha2VmYWNlIiwiYSI6ImNpcTFlenBiZDAweDBmd25vMWJxYTRteGoifQ.VLRmQ5HxMyIdQ6qMF6EJug';
     var map = L.mapbox.map('map', 'mapbox.streets')
     .setView(latlon, 14);
 
+    var foursquarePlaces = L.layerGroup().addTo(map);
     map.attributionControl
     .addAttribution('<a href="https://foursquare.com/">Places data from Foursquare</a>');
-
-    var foursquarePlaces = L.layerGroup().addTo(map);
 
     $scope.beer = function () {
       if (beer === false) {

@@ -101,6 +101,14 @@
   visibility: hidden;
 }
 
+.foo {
+  margin-top: 200px;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: column;
+}
+
 .setting ion-toggle{
   margin-bottom: 25px;
   padding: 0px;

@@ -15,14 +15,15 @@
 </head>
 <body ng-controller="JerkCtrl">
   <header>
-    <h3><span id="jerk">Jerk</span> maps</h3>
-    <img src="/images/beer.png" alt="beer glass" ng-click="beer()"/>
+    <h3 id="logo"><span id="jerk">Jerk</span> maps</h3>
+    <div class="right">
+      <h3 id="about" ng-click="about()">About</h3>
+      <img src="/images/beer.png" alt="beer glass" ng-click="beer()"/>
+    </div>
   </header>
   <div class="body-wrapper">
     <div id='map'></div>
-    <p>
-      Jerk-less is an ios tool that measures acceleration “jerks”
-    </p>
+    <p></p>
   </div>
 </body>
 </html>
