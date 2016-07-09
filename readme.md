@@ -1,12 +1,13 @@
 #The Jerk Project  
 The Jerk project is two parts:  
 
-##Jerkless:  
-A hybrid iOS app that tracks "jerks" (changes in acceleration). It has two settings: city and mountain mode.
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+###Jerkless:  
+A hybrid iOS app that tracks "jerks" (changes in acceleration). It has two settings: city and mountain mode.  
+![alt text](https://github.com/blakeface/jerkless/blob/master/client_server/public/images/start.png "Landing screen")  
+![alt text](https://github.com/blakeface/jerkless/blob/master/client_server/public/images/giphy.gif "Recording screen")  
+![alt text](https://github.com/blakeface/jerkless/blob/master/client_server/public/images/summary.png "Summary screen")  
 
-
-##Jerkmaps:  
+###Jerkmaps:  
 Maps out the Jerkless data and color-codes each geo-point. It also contains a hidden bonus feature...  
 
 Installation:    
@@ -21,7 +22,7 @@ To run with on a browser:
 $ ionic serve ios  
 
 
-*NOTE*: Due to interpretation differences, Jerkless will display differently between a browser, emulator, and iOS device. Jerkless is configured to show best on an iOS device. 
+*NOTE*: Due to interpretation differences, Jerkless will display differently between a browser, emulator, and iOS device. Jerkless is configured to show best on an iOS device.
 
 
 Specs:  
