@@ -17,7 +17,7 @@
 </head>
 <body ng-controller="JerkCtrl">
   <header>
-    <h3 id="logo"><span id="jerk">Jerk</span> maps</h3>
+    <h3 id="logo"><span class="jerk">Jerk</span> maps</h3>
     <div class="right">
       <h3 id="about" ng-click="about()">About</h3>
       <img src="/images/beer.png" alt="beer glass" ng-click="beer()"/>
@@ -25,7 +25,48 @@
   </header>
   <div class="body-wrapper">
     <div id='map'></div>
-    <p></p>
+  </div>
+  <footer>
+    <a href="https://github.com/blakeface/jerkless" target="_blank"><img src="/images/GitHub-Mark-Light.png" alt="GitHum logo" /></a>
+  </footer>
+  <div class="modal" ng-show="aboutVis">
+    <div class="section">
+      <h1 class="jerk title">Jerk</h1>
+      <p>noun | <i>/jərk/</i></p>
+      <p>A change in acceleration. Also known as a jolt, surge, or lurch.</p>
+    </div>
+    <div class="section">
+      <p><span class="header jerk" id="inline-jerk">The Jerk Project</span> measures cycling jerks.</p>
+      <p>It has no affiliation with Steve Martin films, Jamaican chicken, or unsavory people...</p>
+    </div>
+    <div class="section">
+      <h3 class="header">Act one: JerkLess</h3>
+      <p>Jerkless is a hybrid iOS app that taps into the accelerometer and geolocation data of any iOS device.</p>
+      <div class="screen-shots">
+        <div class="image-holder">
+          <img src="/images/start.png" alt="app landing page" />
+          <p>Landing page</p>
+        </div>
+        <div class="image-holder">
+          <img src="/images/giphy.gif" alt="app recording page" />
+          <p>Recording page</p>
+        </div>
+        <div class="image-holder">
+          <img src="/images/summary.png" alt="app summary page" />
+          <p>Summary page</p>
+          <p>The graph shows the jerks of the x, y, and z axes displayed over time</p>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h3 class="header">Act two: JerkMaps</h3>
+      <p>Jerkmaps is the visual results of the Jerkless data. Each point is color coded:</p>
+      <p>Green = jerkless</p>
+      <p>Red = jerky</p>
+      <h3></h3>
+      <p>The site also has a social courtesy:</p>
+      <p>Clicking the beer glass in the upper-right will display all the nearby breweries, allowing you to pick the smoothest ride home...</p>
+    </div>
   </div>
 </body>
 </html>
