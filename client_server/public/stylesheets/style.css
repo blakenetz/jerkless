@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "frenchy";
+  url: url("/fonts/frenchy.ttf");
+}
+
 body{
   margin: 0px;
 }
